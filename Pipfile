@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 awslambdaric = "*"
+pylint = "*"
+
 [dev-packages]
 
 [requires]
