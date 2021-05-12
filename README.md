@@ -1,1 +1,1 @@
-# bclipp-MLOps_lambda_python
+# MLOps_lambda_python
