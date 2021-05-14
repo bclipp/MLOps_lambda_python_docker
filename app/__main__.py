@@ -1,5 +1,12 @@
 import sys
+import sklearn
+import pickle5 as pickle
 
 
 def handler(event, context):
-    return 'Hello from AWS Lambda using Python' + sys.version + '!'
+    loaded_model = pickle.load(open("model.pkl", 'rb'))
+    prediction = loaded_model.predict(event["body"])
+    return {
+        'statusCode': 200,
+        'body': prediction
+    }
