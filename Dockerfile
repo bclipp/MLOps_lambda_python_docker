@@ -7,7 +7,8 @@ COPY model ./
 COPY Pipfile ./
 COPY Pipfile.lock ./
 
-RUN pip install pipenv \
-    && pipenv sync
+RUN yum install -y gcc \
+    && pip install pipenv \
+    && pipenv install
 
 CMD ["__main__.handler"]
