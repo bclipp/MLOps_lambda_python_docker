@@ -11,4 +11,7 @@ RUN yum install -y gcc \
     && pip install pipenv \
     && pipenv install
 
-CMD ["__main__.handler"]
+
+
+#CMD ["__main__.handler"]
+CMD startup.sh
