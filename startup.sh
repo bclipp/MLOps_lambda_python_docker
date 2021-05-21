@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pipenv run python3 __main__.handler
+pipenv run python3 lambda_function.handler
