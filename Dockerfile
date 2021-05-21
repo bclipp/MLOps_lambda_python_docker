@@ -2,19 +2,18 @@ FROM amazon/aws-lambda-python
 
 RUN pip install awslambdaric
 
-COPY app/__main__.py   ./
+COPY app/lambda_function.py   ./
 COPY model ./
 COPY Pipfile ./
 COPY Pipfile.lock ./
 COPY startup.sh ./
-COPY requirements.txt ./
 
 RUN yum install -y gcc \
+    && pip install pipenv \
+    && pipenv install \
+    && pip freeze > requirements.txt \
     && pip install -r requirements.txt --no-cache-dir
-#RUN yum install -y gcc \
-#    && pip install pipenv \
-#    && pipenv install
 
 
-CMD ["__main__.handler"]
+CMD ["lambda_function.handler"]
 # CMD startup.sh
