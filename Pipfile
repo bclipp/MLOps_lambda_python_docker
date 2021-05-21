@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 awslambdaric = "*"
 pylint = "*"
-sklearn = "*"
+sklearn = "0.23.2"
 pickle5 = "*"
 
 [dev-packages]

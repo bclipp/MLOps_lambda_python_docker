@@ -1,13 +1,14 @@
 import sys
-import sklearn
 import pickle5 as pickle
+import sklearn
+import numpy as np
 
 
 def handler(event, context):
     loaded_model = pickle.load(open("model.pkl", 'rb'))
-    prediction = loaded_model.predict(event["body"])
-    test = event
+    X = np.array([event]).reshape(-1, 1)
+    prediction = loaded_model.predict(X)
     return {
         'statusCode': 200,
-        'body': test
+        'body': prediction
     }
