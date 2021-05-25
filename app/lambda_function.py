@@ -6,13 +6,9 @@ import numpy as np
 
 def handler(event, context):
     loaded_model = pickle.load(open("model.pkl", 'rb'))
-    X = np.array([event["data"]]).reshape(-1, 1)
-    prediction = loaded_model.predict(X)
-    print(type(prediction))
+    X = np.array(event["data"])
+    prediction = loaded_model.predict([X])
     message = {
-        '0' : prediction[0],
-        '1': prediction[1],
-        '2': prediction[2],
-        '3': prediction[3],
+        'prediction': float(prediction)
     }
     return message
