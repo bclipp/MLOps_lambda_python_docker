@@ -34,6 +34,7 @@ publish:
     - master
   image: 
     name: amazon/aws-cli
+    entrypoint: [""]
   services:
     - docker:dind
   before_script:
