@@ -30,6 +30,7 @@ on-pull-requests:
     - pylint -d C0103 --fail-under=8 app
 
 publish:
+  stage: deploy
   only:
     - master
   image: 
