@@ -30,6 +30,8 @@ on-pull-requests:
     - pylint -d C0103 --fail-under=8 app
 
 publish:
+  only:
+    - master
   image: 
     name: amazon/aws-cli
   services:
