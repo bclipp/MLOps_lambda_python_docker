@@ -1,3 +1,12 @@
+
+variables:
+  DOCKER_REGISTRY: 112437402463.dkr.ecr.us-east-2.amazonaws.com
+  AWS_DEFAULT_REGION: us-east-2
+  APP_NAME: lambda-mlops-model
+  DOCKER_HOST: tcp://docker:2375
+
+
+
 image: "python:3.7"
 
 variables:
@@ -20,7 +29,16 @@ on-pull-requests:
     - pip install -r requirements.txt
     - pylint -d C0103 --fail-under=8 app
 
-except-pull-requests:
-  script: echo 'this should not run on pull requests'
-  except:
-    - external_pull_requests
+publish:
+  image: 
+    name: amazon/aws-cli
+  services:
+    - docker:dind
+  before_script:
+    - amazon-linux-extras install docker
+    - aws --version
+    - docker --version
+  script:
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID . 
+    - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
