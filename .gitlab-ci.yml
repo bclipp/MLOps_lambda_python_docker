@@ -7,7 +7,6 @@ variables:
 
 
 
-image: "python:3.7"
 
 variables:
   WORKON_HOME: .pipenv/venvs
@@ -19,6 +18,7 @@ cache:
     - .pipenv
 
 on-pull-requests:
+  image: "python:3.7"
   stage: test
   script:
     - pip install pylint
