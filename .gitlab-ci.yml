@@ -32,7 +32,7 @@ on-pull-requests:
 publish:
   stage: deploy
   only:
-    - master
+    - main
   image: 
     name: amazon/aws-cli
     entrypoint: [""]
