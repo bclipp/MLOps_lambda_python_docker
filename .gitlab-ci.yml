@@ -4,11 +4,6 @@ variables:
   AWS_DEFAULT_REGION: us-east-2
   APP_NAME: lambda-mlops-model
   DOCKER_HOST: tcp://docker:2375
-
-
-
-
-variables:
   WORKON_HOME: .pipenv/venvs
   PIP_CACHE_DIR: .pipenv/pipcache
 
