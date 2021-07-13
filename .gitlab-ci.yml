@@ -42,6 +42,7 @@ publish:
     - docker --version
   script:
     #- docker build -t $DOCKER_REGISTRY/$APP_NAME:latest . 
+    - dbfs:/databricks/mlflow-tracking/1402195310430122/a3661b3dcfe947ccb238e55251348fca/artifacts/model 
     - docker build -t 112437402463.dkr.ecr.us-east-2.amazonaws.com/dev/lambda-mlops-model:latest . 
     - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
     - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
